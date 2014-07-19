@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html lang="en" xml:lang="en">
+<html>
+<head>
+    <title>Mrs Happy Chicken</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">@import "style/style.css";</style>
+    <script type="text/javascript">
+        function startIt(){
+            var scriptTag = null;
+            
+            var mainDiv = document.getElementById('main');
+            var introDiv = document.getElementById('intro');
+            var backgroundMusicDiv = document.getElementById('backgroundMusic');
+
+            backgroundMusicDiv.innerHTML = "";
+            introDiv.setAttribute("class", "undisplay");
+            mainDiv.setAttribute("class", "display");
+
+            scriptTag = document.createElement('script');
+            scriptTag.setAttribute('src','js/bind_polyfill.js');
+            document.body.appendChild(scriptTag);
+
+            scriptTag = document.createElement('script');
+            scriptTag.setAttribute('src','js/classlist_polyfill.js');
+            document.body.appendChild(scriptTag);
+
+            scriptTag = document.createElement('script');
+            scriptTag.setAttribute('src','js/animframe_polyfill.js');
+            document.body.appendChild(scriptTag);
+
+            scriptTag = document.createElement('script');
+            scriptTag.setAttribute('src','js/keyboard_input_manager.js');
+            document.body.appendChild(scriptTag);
+
+            scriptTag = document.createElement('script');
+            scriptTag.setAttribute('src','js/html_actuator.js');
+            document.body.appendChild(scriptTag);
+
+            scriptTag = document.createElement('script');
+            scriptTag.setAttribute('src','js/grid.js');
+            document.body.appendChild(scriptTag);
+
+            scriptTag = document.createElement('script');
+            scriptTag.setAttribute('src','js/tile.js');
+            document.body.appendChild(scriptTag);
+
+            scriptTag = document.createElement('script');
+            scriptTag.setAttribute('src','js/local_storage_manager.js');
+            document.body.appendChild(scriptTag);
+
+            scriptTag = document.createElement('script');
+            scriptTag.setAttribute('src','js/game_manager.js');
+            document.body.appendChild(scriptTag);
+
+            scriptTag = document.createElement('script');
+            scriptTag.setAttribute('src','js/application.js');
+            document.body.appendChild(scriptTag);
+        }
+    </script>
+</head>
+<body>
+<div id="container">
+    <div id="intro" class="display">
+        <span id="backgroundMusic"><audio autoplay loop src="media/boring-cavern.mp3"></audio></span>
+        <table>
+            <tr>
+                <td style="text-align:left;vertical-align:top">
+                    <img alt="logo" src="images/chicken-logo-ani.gif" />
+                    <p class="title">Mrs Happy Chicken</p>
+                </td>
+                <td style="text-align:right;vertical-align:bottom">
+                    <strong class="justPlay shaking" onclick="startIt();">PLAY</strong>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <p class="game-explanation">
+                        <strong class="important">Game story:</strong> Mrs Happy Chicken has got a problem: every time she <strong>lays an egg</strong>, this grows up to the weight of <strong>2Kg or 4Kg</strong>! She cannot brood eggs like that, so you have to help her.
+                    </p>
+                    <p class="game-explanation">
+                        <strong class="important">Game purpose:</strong> help Mrs Happy Chicken to <strong>grow her eggs and get baby chickens</strong>. The more eggs you grow and the more baby chickens you get, the higher score you earn and the happier mrs Happy Chicken become.
+                    </p>
+                    <p class="game-explanation">
+                        <strong class="important">How to play:</strong> use your <strong>arrow keys</strong> or your <strong>fingers</strong> (if you got a touchscreen) to move the eggs mrs Happy Chicken lays on the grid. You can move the eggs left, right, up or down. <strong>Every time you move, mrs Happy Chicken lays a new egg</strong> in the grid. When you <strong>move an egg against another one of the same weight, they merge into one</strong> with double the weight. When you make an 8Kg egg, you get your first baby chicken (you'll get the next at 16kg, then at 32kg, and so on).
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:right;vertical-align:bottom">
+                    <p class="copyright">
+                        Created by <a href="http://www.amatolab.com" target="_blank">Amatolab.</a> Forked <a href='http://amatolab.github.io/mrsHappyChicken/'>here</a> from <a href='http://gabrielecirulli.github.io/2048/'>2048</a> by <a href="http://gabrielecirulli.com" target="_blank">Gabriele Cirulli</a>. Background music by <a href="http://www.playonloop.com/2013-music-loops/boring-cavern/">playnloop.com</a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="main" class="undisplay">
+        <div id="body">
+            <div id="content">
+                  <div class="container">
+					<div class="game-container">
+					  <div class="game-message">
+						<p class="mainMsg"></p>
+						<p class="subMsg"></p>
+						<div class="lower">
+							<a class="keep-playing-button">Keep going</a>
+							<a class="retry-button">Try again</a>
+                            <a class="publish-score-button">Publish your score</a>
+							<a class="got-it-button">Got it!</a>
+						</div>
+					  </div>
+					  <div class="grid-container">
+						<div class="grid-row">
+						  <div class="grid-cell"></div>
+						  <div class="grid-cell"></div>
+						  <div class="grid-cell"></div>
+						</div>
+						<div class="grid-row">
+						  <div class="grid-cell"></div>
+						  <div class="grid-cell"></div>
+						  <div class="grid-cell"></div>
+						</div>
+						<div class="grid-row">
+						  <div class="grid-cell"></div>
+						  <div class="grid-cell"></div>
+						  <div class="grid-cell"></div>
+						</div>
+					  </div>
+
+					  <div class="tile-container">
+
+					  </div>
+					</div>
+					<div class="uack"></div>
+				  </div>
+            </div>
+     		<div id="left-sidebar">
+			    <div id="header">
+				  <div class="left-heading"><img alt="mrs-happy-chicken logo" src="images/chicken-logo-ani.gif"/>
+				  </div>
+				  <div class="heading">
+					<div class="above-container">
+					  <a class="restart-button">
+                        <div class="above-game">
+						    New Game
+					    </div>
+                      </a>
+					</div>
+				  </div>
+				  <div class="heading">
+					<div class="scores-container">
+                      <div class="time-container">00:00:00</div>
+                      <div style="clear:both"></div>
+					  <div class="score-container">0</div>
+					  <div style="clear:both"></div>
+					  <div class="best-container">0</div>
+					  <div style="clear:both"></div>
+					</div>
+				  </div>					
+				</div>
+				<div class="babies">
+				  <img alt="baby chickens count" id="babiesCount" src="images/babies.png" />
+				</div>
+				<div class="options">
+				  <form action="#" style="margin-top:5px;font-size:12px"><input type="checkbox" name="noMsg" value="1" onchange="hideMsgs=!hideMsgs;return false;"/> turn off messages.</form>
+				  <form action="#"  style="margin-top:5px;font-size:12px"><input type="checkbox" name="noSnd" value="1" onchange="hideSnds=!hideSnds;return false;"/> turn off sounds.</form>
+				</div>
+			</div>
+        </div>
+    </div>
+    <div id="modalContainer" class="undisplay">
+        <div id="modal">
+            <div id="fields">
+                <div class="name-email display">
+                    <input type="text" value="your name" id="name"/><input type="text" value="your email" id="email"/>
+                    <script>
+                        Windows.System.UserProfile.UserInformation.getDisplayNameAsync().then(
+                            function (name) {
+                                document.querySelector("#name").value = name;
+                            }
+                        );
+                    </script>
+                </div>
+            </div>
+            <div id="outcome" class="undisplay">
+                <span class="successPublishing shaking undisplay">congrats, you ranked #<span id="outcomeRanking">1</span>&deg;!</span>
+                <span class="errorPublishing undisplay"><span id="errorDesc"></span></span>
+            </div>
+            <div id="commands">
+                <div class="display">
+                    <div class="publish-cancel display">
+                        <input type="button" id="publishDo" value="publish" class="publishDo" /><input type="button" id="publishCancel" value="cancel" onclick="document.querySelector('#modalContainer').setAttribute('class','undisplay');document.getElementById('outcome').setAttribute('class', 'undisplay');document.querySelector('.errorPublishing').setAttribute('class', 'errorPublishing undisplay');" />
+                    </div>
+                    <div class="publish-done undisplay">
+                        <input type="button" id="publishDone" value="ok" class="publishDone" /><input type="button" id="seeHighscores" value="highscores" class="seeHighscores" onclick="window.open('http://mhc.queerfolks.org/','_mhc')" />
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
